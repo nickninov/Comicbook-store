@@ -20,6 +20,7 @@ void editItem(struct item * item, int size){
             if(option - 1 != -1 && option - 1 < size){
                 // Edit the selected product
                 getItem(&item[option-1]);
+                printf("\nItem successfully edited!\n");
                 break;
             }
             else {

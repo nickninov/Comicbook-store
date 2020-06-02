@@ -51,8 +51,8 @@ void getItem(struct item * item){
 void addProduct(struct item * item, int * index, struct item newItem, int *size, int *capacity){
     // Check if the dynamic array's size is greater than the current capacity
     if(*size > *capacity){
-        // Increase the capacity
-        struct item * newP = (struct item *) realloc(item, itemSize * 2);
+        // Increase the capacity of the current array
+        struct item * newP = (struct item *) realloc(item, sizeof(item) * 2);
         // Make the current array structure point to the new location
         item = newP;
         // Double the capacity

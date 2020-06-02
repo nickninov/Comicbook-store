@@ -23,17 +23,16 @@ void printOptions(void){
 
 int main(){
     int option, size, capacity, index;
-
-    printf("Ealing's Comicbook Store\n\n");
     
     // Initial prodcut
-    struct item * item = (struct item *) malloc(INITIAL_CAPACITY * sizeof(int));
+    struct item * item = (struct item *) malloc(INITIAL_CAPACITY * itemSize);
     size = 0;
     index = 0;
     capacity = INITIAL_CAPACITY;
 
     // Run forever
     while(1){
+        printf("Ealing's Comicbook Store\n\n");
         // Display options
         printOptions();
         // Get user's input
@@ -85,6 +84,7 @@ int main(){
         else if(option == 8){
             // Clear terminal screen
             clearScreen();
+            printf("Products:\n\n");
             // Display the items inside the console
             showProducts(item, size);
         }
