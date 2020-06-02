@@ -53,7 +53,6 @@ void getString(char * str, char txt[], int num) {
 
 // Display all items in the console
 void showProducts(struct item * item, int size){
-    // int i = 0;
     if(size > 0){
         for(int i = 0; i < size; i++){
             printf("%d) Name: %s\n", (i+1), (item+i)->name);
