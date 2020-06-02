@@ -6,6 +6,7 @@
 void getItem(struct item * item){
     int isValid = 0;
     getString((*item).name, "Name", NAME);
+
     getString((*item).description, "Description", DESC);
 
     // Runs until a quantity greater than 0 has been entered
@@ -62,5 +63,5 @@ void addProduct(struct item * item, int * index, struct item newItem, int *size,
     // Increment the size and index of the array
     *size += 1;
     *index += 1;
-    printf("\nItem hass been added successfully!\n");
+    printf("\nItem has been added successfully!\n");
 }

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Clear the terminal's screen
+// Clear the terminal screen
 void clearScreen(void){
     // Check if the computer is with a Windows - clear console
     #ifdef _WIN32
@@ -51,7 +51,7 @@ void getString(char * str, char txt[], int num) {
     fgets(str, num, stdin);
 }
 
-// Display all items in console
+// Display all items in the console
 void showProducts(struct item * item, int size){
     int i = 0;
     if(size > 0){
@@ -60,7 +60,7 @@ void showProducts(struct item * item, int size){
                 printf("%d) Name: %s\n", (i+1), (item+i)->name);
                 printf("Description: %s", (item+i)->description);
                 printf("Quantity: %d\n", (item+i)->quantity);
-                printf("Price: %.2f\n\n\n", (item+i)->price);
+                printf("Price: %.2f\n\n", (item+i)->price);
                 i++;
             }
             else {

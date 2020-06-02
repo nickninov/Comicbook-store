@@ -7,17 +7,18 @@
 #include "header.h"
 #include "functions.c"
 #include "add.c"
+#include "edit.c"
 
 // Display to the user the available options
 void printOptions(void){
     printf("1) Exit program\n");
-    printf("2) Add item\n");
-    printf("3) Delete item\n");
-    printf("4) Edit item\n");
-    printf("5) Search item\n");
+    printf("2) Add product\n");
+    printf("3) Delete product\n");
+    printf("4) Edit product\n");
+    printf("5) Search product\n");
     printf("6) Save data\n");
     printf("7) Load data\n");
-    printf("8) Show data\n\n");
+    printf("8) Show products\n\n");
 }
 
 int main(){
@@ -35,20 +36,26 @@ int main(){
     while(1){
         // Display options
         printOptions();
-        
         // Get user's input
         getInt(&option, "Option");
         printf("\n");
         // Exit the program
         if(option == 1){
+            // Clear terminal screen
+            clearScreen();
             printf("Goodbye :)\n\n");
             free(item);
             return EXIT_SUCCESS;
         }
         // Add product to dynamic array
         else if(option == 2){
+            // Clear terminal screen
+            clearScreen();
+            printf("Enter product details.\n\n");
             struct item newItem;
+            // Get new product details
             getItem(&newItem);
+            // Add new product to the array
             addProduct(item, &index, newItem, &size, &capacity);
         }
         // Remove product
@@ -57,7 +64,10 @@ int main(){
         }
         // Edit product
         else if(option == 4){
-            printf("Edit product\n\n");
+            // Clear terminal screen
+            clearScreen();
+            // Edit a selected item 
+            editItem(item, size);
         }
         // Search for product
         else if(option == 5){
@@ -73,14 +83,17 @@ int main(){
         }
         // Show data
         else if(option == 8){
+            // Clear terminal screen
+            clearScreen();
+            // Display the items inside the console
             showProducts(item, size);
         }
         // Invalid Option
         else {
+            // Clear terminal screen
             clearScreen();
-            printf("Invalid option...\nPlease try again.\n\n");
+            printf("Invalid option...\nPlease try again.\n");
         }
-
         printf("\n-----------------------------\n\n");   
     }
 
