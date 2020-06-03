@@ -7,7 +7,6 @@ void editItem(struct item * item, int size){
     int option;
     // Check array's size
     if(size > 0){
-        printf("Products:\n\n");
         // Show the items in the array
         showProducts(item, size);
 

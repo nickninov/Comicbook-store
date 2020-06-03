@@ -54,14 +54,63 @@ void getString(char * str, char txt[], int num) {
 // Display all items in the console
 void showProducts(struct item * item, int size){
     if(size > 0){
+        printf("---------------------------------------\n\n");
+        printf("Products:\n\n");
         for(int i = 0; i < size; i++){
             printf("%d) Name: %s\n", (i+1), (item+i)->name);
-            printf("Description: %s", (item+i)->description);
-            printf("Quantity: %d\n", (item+i)->quantity);
-            printf("Price: %.2f\n\n", (item+i)->price);
+            printf("\tDescription: %s", (item+i)->description);
+            printf("\tQuantity: %d\n", (item+i)->quantity);
+            printf("\tPrice: %.2f\n\n", (item+i)->price);
+            // printf("\n\tItem pointer: %p\n\n", (void *) item+i);
         }
+        printf("---------------------------------------\n\n");
     }
     else {
-        printf("No products...\n");
+        printf("No products...\n\n");
+    }
+}
+
+// Get user's data for a single structure
+void getItem(struct item * item){
+    int isValid = 0;
+    getString((*item).name, "Name", NAME);
+
+    getString((*item).description, "Description", DESC);
+
+    // Runs until a quantity greater than 0 has been entered
+    while(isValid != 1){
+        // Get user's input
+        getInt(&item->quantity, "Quantity");
+
+        // Check if input was valid
+        if(item->quantity == 0){
+            // Error message
+            printf("\nInvalid quantity!\nPlease try again.\n\n");
+        }
+        // Input was valid
+        else {
+            // Break loop
+            isValid = 1;
+        }
+    }
+    
+    // Update loop condition
+    isValid = 0;
+
+    // Runs until a quantity greater than 0 has been entered
+    while(isValid != 1){
+        // Get user's input
+        getFloat(&item->price, "Price");
+
+        // Check if input was valid
+        if(item->price == 0){
+            // Error message
+            printf("\nInvalid price!\nPlease try again.\n\n");
+        }
+        // Input was valid
+        else {
+            // Break loop
+            isValid = 1;
+        }
     }
 }

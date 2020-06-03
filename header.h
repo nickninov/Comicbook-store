@@ -11,7 +11,7 @@
 #define DESC 250
 
 // The initial number of items that need to be allocated in memory
-#define INITIAL_CAPACITY 3
+#define INITIAL_CAPACITY 4
 
 /* 
     Structure of a single item:
