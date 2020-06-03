@@ -9,12 +9,10 @@ void editItem(struct item * item, int size){
     if(size > 0){
         // Show the items in the array
         showProducts(item, size);
-
         // Run until a valid index has been chosen
         while(1){
             // Get user's input
             getInt(&option, "Index No̲");
-
             // Check if the selected option was valid and is in the array's length
             if(option - 1 != -1 && option - 1 < size){
                 // Edit the selected product

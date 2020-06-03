@@ -53,18 +53,18 @@ void getString(char * str, char txt[], int num) {
 
 // Display all items in the console
 void showProducts(struct item * item, int size){
+    // Check array's size
     if(size > 0){
         printf("---------------------------------------\n\n");
         printf("Products:\n\n");
         for(int i = 0; i < size; i++){
             printf("%d) Name: %s\n", (i+1), (item+i)->name);
-            printf("\tDescription: %s", (item+i)->description);
-            printf("\tQuantity: %d\n", (item+i)->quantity);
-            printf("\tPrice: %.2f\n\n", (item+i)->price);
-            // printf("\n\tItem pointer: %p\n\n", (void *) item+i);
+            printf("Description: %s\n", (item+i)->description);
+            printf("Quantity: %d\t\tPrice: %.2f\n\n", (item+i)->quantity, (item+i)->price);
         }
         printf("---------------------------------------\n\n");
     }
+    // Array is empty
     else {
         printf("No products...\n\n");
     }
@@ -73,15 +73,13 @@ void showProducts(struct item * item, int size){
 // Get user's data for a single structure
 void getItem(struct item * item){
     int isValid = 0;
+    // Get user's input
     getString((*item).name, "Name", NAME);
-
     getString((*item).description, "Description", DESC);
-
     // Runs until a quantity greater than 0 has been entered
     while(isValid != 1){
         // Get user's input
         getInt(&item->quantity, "Quantity");
-
         // Check if input was valid
         if(item->quantity == 0){
             // Error message

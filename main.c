@@ -7,6 +7,7 @@
 #include "header.h"
 #include "functions.c"
 #include "edit.c"
+#include "delete.c"
 
 // Display to the user the available options
 void printOptions(void){
@@ -19,48 +20,6 @@ void printOptions(void){
     printf("7) Load data\n");
     printf("8) Show products\n\n");
 }
-
-// Deletes an item from the dynamic array
-void deleteProduct(struct item * item, int * size, int * index){
-    int option;
-    // Check array's size
-    if(*size > 0){
-        while(1){
-            // Display the products
-            showProducts(item, *size);
-            // Get the user's input
-            getInt(&option, "Delete No̲");
-            // Update option
-            option -= 1;
-            // Check if input was valid
-            if(option == -1){
-                // Clear terminal screen
-                clearScreen();
-                printf("Invalid option...\nPlease try again.\n\n");
-            }
-            // Check if input is inside the array
-            if(option>= 0 && option < *size){
-                printf("Size before delete: %d\nSize after delete: %d\n\nIndex: %d\n\n", *size, (*size - 1), *index);
-
-
-                // Check if elements need to be shifted
-                if(option < *size - 1){
-                    printf("Not the last item...\n\n");
-                }
-
-                // Decrement the array's size
-                // *size -= 1;
-                break;
-            }
-        }
-
-    }
-    // Array is empty
-    else {
-        printf("No items to delete...\n");
-    }
-}
-
 
 int main(){
     int option, size, capacity, index;
@@ -75,7 +34,7 @@ int main(){
     if(item != NULL){
         // Run forever
         while(1){
-            printf("Ealing's Comicbook Store\n\n");
+            printf("\nEaling's Comicbook Store\n\n");
             // Display options
             printOptions();
             // Get user's input
@@ -116,7 +75,7 @@ int main(){
             else if(option == 3){
                 // Clear terminal screen
                 clearScreen();
-                // deleteProduct(item, &size, &index);
+                deleteProduct(item, &size, &index);
             }
             // Edit product
             else if(option == 4){
