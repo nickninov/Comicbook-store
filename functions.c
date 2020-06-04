@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 // Clear the terminal screen
 void clearScreen(void){
@@ -48,7 +49,12 @@ void getFloat(float *option, char txt []){
 */
 void getString(char * str, char txt[], int num) {
     printf("%s: ", txt);
+    // Get user's input
     fgets(str, num, stdin);
+    // Remove \n at the end
+    if(str[strlen(str) - 1] == '\n'){
+        str[strlen(str) - 1] = 0;
+    }
 }
 
 // Display all items in the console
@@ -58,9 +64,9 @@ void showProducts(struct item * item, int size){
         printf("---------------------------------------\n\n");
         printf("Products:\n\n");
         for(int i = 0; i < size; i++){
-            printf("%d) Name: %s\n", (i+1), (item+i)->name);
+            printf("%d) Name: %s\n\n", (i+1), (item+i)->name);
             printf("Description: %s\n", (item+i)->description);
-            printf("Quantity: %d\t\tPrice: %.2f\n\n", (item+i)->quantity, (item+i)->price);
+            printf("Quantity: %d\t\tPrice: £%.2f\n\n", (item+i)->quantity, (item+i)->price);
         }
         printf("---------------------------------------\n\n");
     }

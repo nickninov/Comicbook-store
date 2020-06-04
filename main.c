@@ -8,6 +8,7 @@
 #include "functions.c"
 #include "edit.c"
 #include "delete.c"
+#include "search.c"
 
 // Display to the user the available options
 void printOptions(void){
@@ -75,6 +76,7 @@ int main(){
             else if(option == 3){
                 // Clear terminal screen
                 clearScreen();
+                // Delete a product
                 deleteProduct(item, &size, &index);
             }
             // Edit product
@@ -86,7 +88,10 @@ int main(){
             }
             // Search for product
             else if(option == 5){
-                printf("Search product\n\n");
+                // Clear terminal screen
+                clearScreen();
+                // Search for a product by it's name
+                searchProduct(item, size);
             }
             // Save data
             else if(option == 6){

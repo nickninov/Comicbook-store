@@ -24,7 +24,7 @@ void deleteProduct(struct item * item, int * size, int * index){
             if(option>= 0 && option < *size){
                 // Check if elements need to be shifted
                 if(option < *size - 1){
-                    // Shift the items by 1 position
+                    // Shift the elements by 1 position backwards
                     for(int i = option; i < *size; i++){
                         strcpy((item+i)->name, (item+i+1)->name);
                         strcpy((item+i)->description, (item+i+1)->description);
