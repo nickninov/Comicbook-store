@@ -9,18 +9,7 @@
 #include "edit.c"
 #include "delete.c"
 #include "search.c"
-
-// Display to the user the available options
-void printOptions(void){
-    printf("1) Exit program\n");
-    printf("2) Add product\n");
-    printf("3) Delete product\n");
-    printf("4) Edit product\n");
-    printf("5) Search product\n");
-    printf("6) Save data\n");
-    printf("7) Load data\n");
-    printf("8) Show products\n\n");
-}
+#include "file.c"
 
 int main(){
     int option, size, capacity, index;
@@ -95,13 +84,45 @@ int main(){
             }
             // Save data
             else if(option == 6){
-                printf("Search product\n\n");
+                // Clear terminal screen
+                clearScreen();
+                // Check if there is any data
+                if(size > 0){
+                    saveData(item, size);
+                }
+                else{
+                    printf("No products to save...\n\n");
+                }
             }
             // Load saved data
             else if(option == 7){
-                printf("Load data\n\n");
+                // Clear terminal screen
+                clearScreen();
+                // Temporary new size
+                int newSize;
+                // File pointer
+                FILE * fileP = fopen("data.bin", "rb");
+                // Check if file exists
+                if(fileP == NULL){
+                    // Display error message - No such file or directory
+                    perror("Error");
+                }
+                else{
+                    // Read the number of records that will be
+                    fread(&newSize, sizeof(int), 1, fileP);
+                    // Double the capacity based on the read size of items
+                    capacity = 2 * newSize;
+                    item = (struct item *) realloc(item, capacity * itemSize);
+                    fread(item, itemSize, newSize, fileP);
+                    // Update current size
+                    size = newSize;
+                    // Update index to the last item
+                    index = size;
+                }
+                // Close the file
+                fclose(fileP);
             }
-            // Show data
+            // Show products
             else if(option == 8){
                 // Clear terminal screen
                 clearScreen();

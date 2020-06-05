@@ -118,3 +118,15 @@ void getItem(struct item * item){
         }
     }
 }
+
+// Display to the user the available options
+void printOptions(void){
+    printf("1) Exit program\n");
+    printf("2) Add product\n");
+    printf("3) Delete product\n");
+    printf("4) Edit product\n");
+    printf("5) Search product\n");
+    printf("6) Save data\n");
+    printf("7) Load data\n");
+    printf("8) Show products\n\n");
+}
