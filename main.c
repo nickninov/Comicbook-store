@@ -118,6 +118,8 @@ int main(){
                     size = newSize;
                     // Update index to the last item
                     index = size;
+                    // Success message
+                    printf("File has been loaded successfully!\n\n");
                 }
                 // Close the file
                 fclose(fileP);
