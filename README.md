@@ -1,4 +1,4 @@
-# Ealing Comicbook Store System
+# Comicbook Store System
 
 A C project that allows the user to:
 - Add items in a dynamic array
