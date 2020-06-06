@@ -76,6 +76,13 @@ void showProducts(struct item * item, int size){
     }
 }
 
+// Converts a string to lowercase
+void toLowerStr(char * str){
+    for(int i = 0; str[i] != '\0'; i++){
+        str[i] = tolower(str[i]);
+    }
+}
+
 // Get user's data for a single structure
 void getItem(struct item * item){
     int isValid = 0;
@@ -97,15 +104,12 @@ void getItem(struct item * item){
             isValid = 1;
         }
     }
-    
     // Update loop condition
     isValid = 0;
-
     // Runs until a quantity greater than 0 has been entered
     while(isValid != 1){
         // Get user's input
         getFloat(&item->price, "Price");
-
         // Check if input was valid
         if(item->price == 0){
             // Error message
@@ -129,4 +133,14 @@ void printOptions(void){
     printf("6) Save data\n");
     printf("7) Load data\n");
     printf("8) Show products\n\n");
+}
+
+// Display to the user the available edit options
+void editOptions(void){
+    printf("Type:\n\n");
+    printf("name - to edit the product's name\n\n");
+    printf("description - to edit the product's description\n\n");
+    printf("quantity - to edit the product's quantity\n\n");
+    printf("price - to edit the product's price\n\n");
+    printf("back - to exit edit mode\n\n");
 }

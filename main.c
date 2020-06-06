@@ -6,9 +6,9 @@
 // Import files
 #include "header.h"
 #include "functions.c"
-#include "edit.c"
 #include "delete.c"
 #include "search.c"
+#include "edit.c"
 #include "file.c"
 
 int main(){
